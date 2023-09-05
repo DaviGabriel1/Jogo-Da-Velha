@@ -88,11 +88,22 @@ public class JogoDaVelha {
     }
     private void fazerJogada(){
         boolean jogadaValida=false;
+        boolean coordenadasValida=false;
+        int linha;
+        int coluna;
         do{
-        System.out.println("Digite a linha da jogada: ");
-        int linha = scan.nextInt();
-        System.out.println("Digite a coluna da jogada: ");
-        int coluna = scan.nextInt();
+            do {
+                System.out.println("Digite a linha da jogada: ");
+                linha = scan.nextInt();
+                System.out.println("Digite a coluna da jogada: ");
+                coluna = scan.nextInt();
+                if(linha<3 && coluna <3 && coluna>=0 && linha>=0){
+                    coordenadasValida=true;
+                }
+                else{
+                    System.out.println("coordenada invalida, tente novamente");
+                }
+            }while(!coordenadasValida);
         if(tabuleiro[linha][coluna].equalsIgnoreCase(".") && linha<=2 && linha>=0 && coluna>=0 && coluna<=2) {
             if (vez % 2 == 0) {
                 tabuleiro[linha][coluna] = jogador1.getSimbolo();
